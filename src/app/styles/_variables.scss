@@ -1,13 +1,14 @@
-$base-background: #605383;
+$base-background: var(--mat-sys-primary-container);
+$base-accent: var(--mat-sys-primary);
 
 /* Цветовая палитра для задач */
-$danger: #ED5565;
-$success: #A0D665;
-$neutral: #4FC1E9;
-$warning: #FFCE58;
+$status-danger: #ED5565;
+$status-success: #A0D665;
+$status-neutral: #4FC1E9;
+$status-warning: #FFCE58;
 
 /* Отступы */
-$lg-margin: 24px;
+$lg-margin: 32px;
 $md-margin: 16px;
 $sm-margin: 8px;
 $xs-margin: 4px;
