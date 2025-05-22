@@ -2,5 +2,13 @@ import { Routes } from '@angular/router';
 import { KanbanComponent } from './pages/kanban/kanban.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'kanban', component: KanbanComponent }
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'kanban'
+  },
+  {
+    path: 'kanban',
+    component: KanbanComponent
+  }
 ];

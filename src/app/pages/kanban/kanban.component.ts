@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-kanban',
-  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './kanban.component.html',
-  styleUrl: './kanban.component.scss'
+  styleUrl: './kanban.component.scss',
+  imports: [],
 })
 export class KanbanComponent {
 

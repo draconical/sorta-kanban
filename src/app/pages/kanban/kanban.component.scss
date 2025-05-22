@@ -1,0 +1,15 @@
+@import '@styles/index.scss';
+
+.kanban {
+  height: 100%;
+
+  padding: $lg-padding $lg-padding 0 $lg-padding;
+  box-sizing: border-box;
+
+  &__workspace {
+    height: 100%;
+
+    border-radius: $md-radius $md-radius 0px 0px;
+    background-color: white;
+  }
+}
