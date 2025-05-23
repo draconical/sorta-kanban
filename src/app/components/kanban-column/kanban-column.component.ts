@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { KanbanTaskModel } from '@models/kanban.model';
 
 @Component({
   selector: 'app-kanban-column',
@@ -9,5 +10,8 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
   imports: [],
 })
 export class KanbanColumnComponent {
+  @Input() title!: string;
+  @Input() tasks!: KanbanTaskModel[];
 
+  constructor() {}
 }

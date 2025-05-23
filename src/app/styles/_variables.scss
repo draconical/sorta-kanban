@@ -7,6 +7,9 @@ $status-success: #A0D665;
 $status-neutral: #4FC1E9;
 $status-warning: #FFCE58;
 
+/* Цветовая палитра для шрифтов */
+$grey: grey;
+
 /* Отступы */
 $lg-margin: 32px;
 $md-margin: 16px;
@@ -23,3 +26,9 @@ $lg-radius: 12px;
 $md-radius: 10px;
 $sm-radius: 8px;
 $xs-radius: 6px;
+
+/* Шрифты */
+$lg-font: 1.25rem;
+$md-font: 1rem;
+$sm-font: 0.85rem;
+$xs-font: 0.75rem;

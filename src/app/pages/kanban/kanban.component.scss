@@ -1,13 +1,23 @@
 @import '@styles/index.scss';
 
 .kanban {
+  overflow: auto;
   height: 100%;
 
   padding: ($lg-padding * 2) 0;
   box-sizing: border-box;
 
   &__workspace {
+    min-width: 1130px;
     height: 100%;
+
+    box-sizing: border-box;
+    padding: $md-margin;
+
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    gap: $md-margin;
 
     border-radius: $md-radius;
     background-color: white;

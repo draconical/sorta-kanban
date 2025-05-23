@@ -1,6 +1,5 @@
-import { KanbanTasksByColumns } from './../models/kanban.model';
 import { Injectable } from '@angular/core';
-import { KanbanTaskModel, KanbanTaskStatusesEnum } from '@models/kanban.model';
+import { KanbanTaskModel, KanbanTaskStatusesEnum, KanbanTasksByColumns } from '@models/kanban.model';
 import { BehaviorSubject } from 'rxjs';
 
 const TASKS_MOCK_UP: KanbanTaskModel[] = [

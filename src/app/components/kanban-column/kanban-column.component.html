@@ -1,1 +1,11 @@
-<p>kanban-column works!</p>
+<div class="kanban-column">
+  <div class="kanban-column__title">{{ title }}</div>
+  <div class="kanban-column__tasks">
+    @for (task of tasks; track task.id) {
+      <div class="kanban-task">
+        <div class="kanban-task__title">{{ task.title }}</div>
+        <div class="kanban-task__description">{{ task.description }}</div>
+      </div>
+    }
+  </div>
+</div>

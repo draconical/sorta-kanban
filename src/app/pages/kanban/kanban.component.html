@@ -1,5 +1,8 @@
 <div class="kanban">
   <div class="kanban__workspace">
-    
+    <app-kanban-column [title]="'На очереди'" [tasks]="columns()?.Start ?? []"></app-kanban-column>
+    <app-kanban-column [title]="'В процессе'" [tasks]="columns()?.InProgress ?? []"></app-kanban-column>
+    <app-kanban-column [title]="'Завершено'" [tasks]="columns()?.Completed ?? []"></app-kanban-column>
+    <app-kanban-column [title]="'Просрочено'" [tasks]="columns()?.Expired ?? []"></app-kanban-column>
   </div>
 </div>
