@@ -1,11 +1,8 @@
-<div class="kanban-column">
+<div [attr.data-status]="status" class="kanban-column">
   <div class="kanban-column__title">{{ title }}</div>
   <div class="kanban-column__tasks">
     @for (task of tasks; track task.id) {
-      <div class="kanban-task">
-        <div class="kanban-task__title">{{ task.title }}</div>
-        <div class="kanban-task__description">{{ task.description }}</div>
-      </div>
+      <app-kanban-task [task]="task"></app-kanban-task>
     }
   </div>
 </div>

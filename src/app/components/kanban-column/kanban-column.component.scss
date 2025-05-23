@@ -19,8 +19,6 @@ app-kanban-column:last-child {
   display: flex;
   flex-direction: column;
 
-  // background-color: rgb(245, 245, 245);
-
   &__title {
     padding: $md-padding;
     margin-bottom: $md-margin;
@@ -40,31 +38,5 @@ app-kanban-column:last-child {
     display: flex;
     flex-direction: column;
     gap: $md-margin;
-  }
-
-  .kanban-task {
-    padding: $md-padding;
-
-    display: flex;
-    flex-direction: column;
-
-    border-radius: $sm-radius;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-
-    &__title {
-      margin-bottom: $sm-margin;
-    }
-
-    &__description {
-      display: -webkit-box;
-      line-clamp: 3;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
-      font-size: $sm-font;
-      color: $grey;
-    }
   }
 }

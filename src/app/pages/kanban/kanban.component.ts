@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { KanbanService } from '@services/kanban.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { KanbanColumnComponent } from "../../components/kanban-column/kanban-column.component";
+import { KanbanTaskStatusesEnum, KanbanTasksByColumns } from '@models/kanban.model';
 
 @Component({
   selector: 'app-kanban',
@@ -14,15 +15,35 @@ import { KanbanColumnComponent } from "../../components/kanban-column/kanban-col
 export class KanbanComponent implements OnInit {
   private readonly kanbanService = inject(KanbanService);
 
-  columns = toSignal(this.kanbanService.columns$);
+  readonly kanbanTaskStatusesEnum = KanbanTaskStatusesEnum;
+  tasks = toSignal(this.kanbanService.tasks$);
+  columns = signal<KanbanTasksByColumns | null>(null);
 
-  constructor() { }
+  constructor() {
+    effect(() => {
+      const tasks = this.tasks();
+      if (tasks) {
+        const newColumns: KanbanTasksByColumns = {
+          Start: [],
+          InProgress: [],
+          Completed: [],
+          Expired: [],
+        }
+
+        tasks.forEach((task) => {
+          newColumns[task.status].push(task);
+        });
+
+        this.columns.set(newColumns);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.getData();
   }
 
   private getData(): void {
-    const data = this.kanbanService.formColumns();
+    this.kanbanService.initTasks();
   }
 }

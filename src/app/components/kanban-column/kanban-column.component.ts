@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { KanbanTaskModel } from '@models/kanban.model';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { KanbanTaskModel, KanbanTaskStatusesEnum } from '@models/kanban.model';
+import { KanbanTaskComponent } from "../kanban-task/kanban-task.component";
 
 @Component({
   selector: 'app-kanban-column',
@@ -7,11 +8,12 @@ import { KanbanTaskModel } from '@models/kanban.model';
   encapsulation: ViewEncapsulation.None,
   templateUrl: './kanban-column.component.html',
   styleUrl: './kanban-column.component.scss',
-  imports: [],
+  imports: [KanbanTaskComponent],
 })
 export class KanbanColumnComponent {
   @Input() title!: string;
   @Input() tasks!: KanbanTaskModel[];
+  @Input() status!: KanbanTaskStatusesEnum;
 
   constructor() {}
 }

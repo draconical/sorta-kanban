@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { KanbanTaskModel, KanbanTaskStatusesEnum, KanbanTasksByColumns } from '@models/kanban.model';
+import { KanbanTaskModel, KanbanTaskStatusesEnum } from '@models/kanban.model';
 import { BehaviorSubject } from 'rxjs';
 
 const TASKS_MOCK_UP: KanbanTaskModel[] = [
@@ -15,40 +15,22 @@ const TASKS_MOCK_UP: KanbanTaskModel[] = [
   providedIn: 'root'
 })
 export class KanbanService {
-  columns$ = new BehaviorSubject<KanbanTasksByColumns | null>(null);
+  tasks$ = new BehaviorSubject<KanbanTaskModel[]>([]);
 
   constructor() { }
 
-  formColumns(tasks: KanbanTaskModel[] = TASKS_MOCK_UP): void {
-    const columns: KanbanTasksByColumns = {
-      Start: [],
-      InProgress: [],
-      Completed: [],
-      Expired: [],
-    };
-
-    tasks.forEach((task) => { columns[task.status].push(task) });
-
-    this.columns$.next(columns);
+  initTasks(): void {
+    this.tasks$.next(TASKS_MOCK_UP);
   }
 
-  moveTask(task: KanbanTaskModel, newStatus: KanbanTaskStatusesEnum) {
-    let newColumns = this.columns$.value;
-    if (!newColumns) {
-      return;
+  moveTask(movingTask: KanbanTaskModel, newStatus: KanbanTaskStatusesEnum) {
+    const newTasks = [...this.tasks$.value];
+    const movingTaskIndex = newTasks.findIndex(task => task.id === movingTask.id);
+
+    if (movingTaskIndex >= 0) {
+      newTasks[movingTaskIndex].status = newStatus;
     }
 
-    const columnFrom = newColumns[task.status];
-    const columnTo = newColumns[newStatus];
-    const taskIndexInColumn = columnFrom.findIndex(t => t.id === task.id);
-
-    // Удаляем задачу из старой колонки
-    columnFrom.splice(taskIndexInColumn, 1);
-
-    // Добавляем задачу в новую
-    columnTo.push(task);
-
-    // Перезаписываем данные
-    this.columns$.next(newColumns);
+    this.tasks$.next(newTasks);
   }
 }
