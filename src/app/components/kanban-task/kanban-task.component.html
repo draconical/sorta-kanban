@@ -1,4 +1,4 @@
-<div #taskCardRef class="kanban-task">
+<div #taskCardRef [attr.data-id]="task.id" class="kanban-task">
   <div class="kanban-task__title">{{ task.title }}</div>
   <div class="kanban-task__description">{{ task.description }}</div>
 </div>

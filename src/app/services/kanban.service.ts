@@ -23,9 +23,9 @@ export class KanbanService {
     this.tasks$.next(TASKS_MOCK_UP);
   }
 
-  moveTask(movingTask: KanbanTaskModel, newStatus: KanbanTaskStatusesEnum) {
+  moveTask(movingTaskId: number, newStatus: KanbanTaskStatusesEnum) {
     const newTasks = [...this.tasks$.value];
-    const movingTaskIndex = newTasks.findIndex(task => task.id === movingTask.id);
+    const movingTaskIndex = newTasks.findIndex(task => task.id === movingTaskId);
 
     if (movingTaskIndex >= 0) {
       newTasks[movingTaskIndex].status = newStatus;
